@@ -1,10 +1,14 @@
 import logo from "../assets/logo.png";
 import person from "../assets/image.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
+      <div className="container-fluid px-4">
         <a className="navbar-brand" href="#">
           <img src={logo} alt="" />
         </a>
@@ -22,10 +26,18 @@ const Navbar = () => {
         <div className="collapse navbar-collapse " id="navbarSupportedContent">
           {" "}
           <div className="me-auto"></div>
-          <button className="btn btn-success me-2" type="submit">
-            Add item
-          </button>
-          <img src={person} alt="" />
+          {pathname === "/add" ? (
+            <></>
+          ) : (
+            <button
+              onClick={() => navigate("/add")}
+              className="btn btn-success me-2"
+              type="submit"
+            >
+              Add item
+            </button>
+          )}
+          <img src={person} alt="" className="rounded-circle" />
         </div>
       </div>
     </nav>

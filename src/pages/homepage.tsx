@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navbar from "../component/navbar";
 import clsx from "clsx";
 import ResourceCard, { IResourceCardProps } from "../component/resource-card";
 import { getAllResources } from "../api";
@@ -61,9 +60,6 @@ const Homepage = () => {
 
   return (
     <>
-      {/* navbar */}
-      <Navbar />
-
       <div className="p-3">
         {/* Tags */}
         <div
@@ -130,6 +126,7 @@ const Homepage = () => {
                 link={i.link}
                 title={i.title}
                 tag={i.tag}
+                id={i.id}
               />
             ))}
           </div>

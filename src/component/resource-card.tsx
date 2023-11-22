@@ -23,7 +23,7 @@ const ResourceCard: FC<IResourceCardProps> = ({
         <div className="d-flex mb-3">
           <img
             className="rounded-1 img-thumbnail"
-            width={75}
+            style={{ width: "75px", height: "75px" }}
             src={icon_url}
             alt=""
           />
