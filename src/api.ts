@@ -9,7 +9,7 @@ const ADD_RESOURCES =
 export const getAllResources = async () => {
   try {
     const res = await axios.get(GET_RESOURCES);
-    return { success: true, data: res };
+    return { success: res.status, data: res.data };
   } catch (error: unknown) {
     return { success: false, data: null, error: error };
   }

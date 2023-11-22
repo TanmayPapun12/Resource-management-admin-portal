@@ -1,16 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../component/navbar";
 import clsx from "clsx";
+import ResourceCard, { IResourceCardProps } from "../component/resource-card";
+import { getAllResources } from "../api";
 
 const Homepage = () => {
   const [tags, setTags] = useState<"Resources" | "Requests" | "Users">(
     "Resources"
   );
   const [searchTerm, setsearchTerm] = useState("");
+  const [allResources, setAllResources] = useState([]);
 
   const handleSearch = (text: string) => {
     console.log(text);
   };
+
+  const fetchAllResources = async () => {
+    const res = await getAllResources();
+    if (res.success === 200) {
+      setAllResources(res.data);
+    }
+  };
+
+  console.log(allResources);
+
+  useEffect(() => {
+    fetchAllResources();
+  }, []);
 
   return (
     <>
@@ -72,6 +88,20 @@ const Homepage = () => {
         </div>
 
         {/* cards */}
+        <div className="container">
+          <div className="row gx-4 gy-3">
+            {allResources.map((i: IResourceCardProps) => (
+              <ResourceCard
+                key={i.id}
+                category={i.category}
+                description={i.description}
+                icon_url={i.icon_url}
+                link={i.link}
+                title={i.title}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
