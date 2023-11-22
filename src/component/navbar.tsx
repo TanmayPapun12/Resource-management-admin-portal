@@ -1,6 +1,6 @@
-import React from "react";
 import logo from "../assets/logo.png";
 import person from "../assets/image.png";
+
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
