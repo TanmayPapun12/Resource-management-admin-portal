@@ -18,7 +18,7 @@ export const getAllResources = async () => {
 export const addResource = async () => {
   try {
     const res = await axios.get(ADD_RESOURCES);
-    return { success: true, data: res };
+    return { success: res.status, data: res.data };
   } catch (error: unknown) {
     return { success: false, data: null, error: error };
   }
